@@ -80,7 +80,7 @@ struct CreateTargetView: View {
                     let currentValue = Double(currentValueString) ?? 0
                     let targetValue = Double(targetString) ?? 0
                     let docId = FirebaseFunctions.shared.createDocId()
-                    Firestore.firestore().collection("Targets").document(docId).setData(["activity": activityName, "currentValue": currentValue, "target": targetValue, "startDate": Date().stripTime(), "endDate": targetDate, "unitIndex": unitIndex]) { err in
+                    Firestore.firestore().collection("Targets").document(docId).setData(["activity": activityName, "currentValue": currentValue, "target": targetValue, "startDate": Date().stripTime(), "endDate": targetDate.stripTime(), "unitIndex": unitIndex, "lastBestDate": Date().stripTime()]) { err in
                         if let error = err {
                             print(error.localizedDescription)
                         } else {
